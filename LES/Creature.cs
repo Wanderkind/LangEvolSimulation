@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
+
 namespace LES
 {
+    /*
     public interface INeuron
     {
         uint Neuron_ID { get; set; }
@@ -19,7 +21,10 @@ namespace LES
     // public interface IGenome
 
     // public class immunity
+    // contamination sensitivity
+    // ...
 
+    */
     public class Creature
     {
         //public Tuple<ushort, ushort> Coord { get; set; }
