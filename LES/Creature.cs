@@ -7,6 +7,19 @@ using System.Threading.Tasks;
 
 namespace LES
 {
+    public interface INeuron
+    {
+        uint Neuron_ID { get; set; }
+    }
+
+    // public interface ISynapse
+    // public interface IProtein
+    // ...
+    // public interface IGene
+    // public interface IGenome
+
+    // public class immunity
+
     public class Creature
     {
         //public Tuple<ushort, ushort> Coord { get; set; }
