@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
+//using Root;
+
 
 namespace LES
 {
@@ -25,6 +27,9 @@ namespace LES
     // ...
 
     */
+
+    // Creature.Calories에 대해 Metabolism 함수 필요
+
     public class Creature
     {
         //public Tuple<ushort, ushort> Coord { get; set; }

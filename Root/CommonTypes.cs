@@ -1,26 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing.Text;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Security.Permissions;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Runtime.InteropServices;
-using System.ComponentModel.Design.Serialization;
-
-
-namespace LES
+﻿namespace Root
 {
     public class CommonTypes
     {
-        public class DirException : Exception { public DirException() :
-                base("#### DirException: illegal direction parameter ####") { } }
+        public class DirException : Exception
+        {
+            public DirException() :
+            base("#### DirException: illegal direction parameter ####")
+            { }
+        }
 
-        public class MoveException : Exception { public MoveException() :
-                base("#### MoveException: unable to move to expected location ####") { } }
+        public class MoveException : Exception
+        {
+            public MoveException() :
+            base("#### MoveException: unable to move to expected location ####")
+            { }
+        }
 
         public struct Coord
         {
@@ -111,7 +105,6 @@ namespace LES
         {
             public float Val { get; set; }
             public Contamination(float v) { Val = v; }
-            public float ICont_Val() { return Val; }
         }
 
         public class Cell_Oriented_Contamination
@@ -120,19 +113,37 @@ namespace LES
             {
                 public float Val { get; set; }
                 public A(float v) { Val = v; }
-                public float ICont_Val() { return Val; }
             }
             public struct B // soil and water
             {
                 public float Val { get; set; }
                 public B(float v) { Val = v; }
-                public float ICont_Val() { return Val; }
             }
             public struct C // grass
             {
                 public float Val { get; set; }
                 public C(float v) { Val = v; }
-                public float ICont_Val() { return Val; }
+            }
+        }
+
+        public struct Nutrition
+        {
+            public float I { get; set; }
+            public float J { get; set; }
+            public float K { get; set; }
+            public Nutrition(float i, float j, float k)
+            {
+                I = i; J = j; K = k;
+            }
+        }
+
+        public struct Food
+        {
+            public float Calories { get; set; }
+            public Nutrition Nutrition { get; set; }
+            public Food(float cal, Nutrition nutr)
+            {
+                Calories = cal; Nutrition = nutr;
             }
         }
 
@@ -183,29 +194,4 @@ namespace LES
             }
         }
     }
-
-    /*
-    class Program
-    {
-        #pragma warning disable CS8321
-        static void Main()
-        {
-            void inspect()
-            {
-                Console.WriteLine($"Size of Coord struct: {Marshal.SizeOf(typeof(CommonTypes.Coord))} bytes");
-                Console.WriteLine($"Size of Creature_Location struct: {Marshal.SizeOf(typeof(CommonTypes.Creature_Location))} bytes");
-                Console.WriteLine($"Size of Season struct: {Marshal.SizeOf(typeof(CommonTypes.Season))} bytes");
-                Console.WriteLine($"Size of Temperature struct: {Marshal.SizeOf(typeof(CommonTypes.Environment.Temperature))} bytes");
-                Console.WriteLine($"Size of Humidity struct: {Marshal.SizeOf(typeof(CommonTypes.Environment.Humidity))} bytes");
-                Console.WriteLine($"Size of Fire.IsFire struct: {Marshal.SizeOf(typeof(CommonTypes.Environment.Fire.IsFire))} bytes");
-                Console.WriteLine($"Size of Contamination struct: {Marshal.SizeOf(typeof(CommonTypes.Contamination))} bytes");
-                Console.WriteLine($"Size of Cell_Oriented_Contamination.A struct: {Marshal.SizeOf(typeof(CommonTypes.Cell_Oriented_Contamination.A))} bytes");
-                //Console.WriteLine($"Size of CellType class: {Marshal.SizeOf(typeof(CommonTypes.CellType))} bytes");
-                Console.WriteLine($"Size of CellType.Grass struct: {Marshal.SizeOf(typeof(CommonTypes.CellType.Grass))} bytes");
-                Console.WriteLine($"Size of CellInfo struct: {Marshal.SizeOf(typeof(CommonTypes.CellInfo))} bytes");
-            }
-            //inspect();
-        }
-    }
-    */
 }

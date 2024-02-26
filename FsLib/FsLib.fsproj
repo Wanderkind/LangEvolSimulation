@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+	<ProjectReference Include="..\Root\Root.csproj" />
     <Compile Include="Library.fs" />
   </ItemGroup>
 
