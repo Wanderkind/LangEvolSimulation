@@ -6,6 +6,9 @@ using System.Threading;
 using System.Threading.Tasks;
 
 //using Root;
+using FsLib;
+using CT = Root.CommonTypes;
+using Env = Root.CommonTypes.Environment;
 
 
 namespace LES
@@ -35,6 +38,14 @@ namespace LES
         //public Tuple<ushort, ushort> Coord { get; set; }
         public uint ID { get; set; }
 
+
+        /*
+        static float Metabolism(Env.Temperature temp)
+        {
+            Func<Env.Temperature, float> metab = BasicFsLib.thermo_metabolism(BasicFsLib.thermo_condition t_c);
+            return 
+        }
+        */
     }
 
     public class Creature_List

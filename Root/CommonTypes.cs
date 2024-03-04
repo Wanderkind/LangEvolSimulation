@@ -107,22 +107,14 @@
             public Contamination(float v) { Val = v; }
         }
 
-        public class Cell_Oriented_Contamination
+        public struct Cell_Oriented_Contamination
         {
-            public struct A // air
+            public float A { get; set; } // air
+            public float B { get; set; } // soil and water
+            public float C { get; set; } // grass
+            public Cell_Oriented_Contamination(float a, float b, float c)
             {
-                public float Val { get; set; }
-                public A(float v) { Val = v; }
-            }
-            public struct B // soil and water
-            {
-                public float Val { get; set; }
-                public B(float v) { Val = v; }
-            }
-            public struct C // grass
-            {
-                public float Val { get; set; }
-                public C(float v) { Val = v; }
+                A = a; B = b; C = c;
             }
         }
 
@@ -152,14 +144,14 @@
             public struct Soil
             {
                 public float Soil_Hum { get; set; } // seperate from Env.Humidity
-                public Cell_Oriented_Contamination.B Cont_B { get; set; }
-                public Soil(float h, Cell_Oriented_Contamination.B c) { Soil_Hum = h; Cont_B = c; }
+                public float Cont_B { get; set; } // Cell_Oriented_Contamination.B
+                public Soil(float h, float b) { Soil_Hum = h; Cont_B = b; }
             }
             public struct Grass
             { // harvested as crops if 90+ fresh at season, turns to soil if 0 fresh
                 public float Freshness { get; set; } // [0, 100]
-                public Cell_Oriented_Contamination.C Cont_C { get; set; }
-                public Grass(float f, Cell_Oriented_Contamination.C c) { Freshness = f; Cont_C = c; }
+                public float Cont_C { get; set; }
+                public Grass(float f, float c) { Freshness = f; Cont_C = c; }
             }
             public struct Tree // unoccupiable
             { // harvested as crops if 90+ fresh at season, dies if 0 fresh
@@ -168,8 +160,8 @@
             }
             public struct Water // unoccupiable
             {
-                public Cell_Oriented_Contamination.B Cont_B { get; set; }
-                public Water(Cell_Oriented_Contamination.B c) { Cont_B = c; }
+                public float Cont_B { get; set; }
+                public Water(float b) { Cont_B = b; }
             }
             public struct Rock { } // just a barrier // unoccupiable
             public struct Sand { } // just a blank cell
