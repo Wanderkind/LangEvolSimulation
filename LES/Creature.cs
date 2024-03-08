@@ -1,14 +1,18 @@
-﻿using System;
+﻿using FsLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 //using Root;
-using FsLib;
+//using FsLib;
 using CT = Root.CommonTypes;
 using Env = Root.CommonTypes.Environment;
+
+using FSC = Microsoft.FSharp.Core;
 
 
 namespace LES
@@ -31,21 +35,23 @@ namespace LES
 
     */
 
-    // Creature.Calories에 대해 Metabolism 함수 필요
-
     public class Creature
     {
+
+        BasicFsLib.WorldConfig worldConfig = BasicFsLib.get_wc();
+        //public FSC.FSharpFunc<Env.Temperature, float> metab = BasicFsLib.thermo_metabolism();
+
         //public Tuple<ushort, ushort> Coord { get; set; }
         public uint ID { get; set; }
 
-
-        /*
-        static float Metabolism(Env.Temperature temp)
+        public static float Metabolism(Env.Temperature temp)
         {
-            Func<Env.Temperature, float> metab = BasicFsLib.thermo_metabolism(BasicFsLib.thermo_condition t_c);
-            return 
+            return BasicFsLib.thermo_metabolism(temp);
         }
-        */
+
+        //public float Func<in Env.Temperature, out float>(Env.Temperature temp);
+        //public Func<Env.Temperature, float> Metabolism = temp => metab(temp);
+
     }
 
     public class Creature_List

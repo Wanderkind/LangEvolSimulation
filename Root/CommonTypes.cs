@@ -150,7 +150,7 @@
             public struct Grass
             { // harvested as crops if 90+ fresh at season, turns to soil if 0 fresh
                 public float Freshness { get; set; } // [0, 100]
-                public float Cont_C { get; set; }
+                public float Cont_C { get; set; } // Cell_Oriented_Contamination.C
                 public Grass(float f, float c) { Freshness = f; Cont_C = c; }
             }
             public struct Tree // unoccupiable
@@ -161,7 +161,7 @@
             public struct Water // unoccupiable
             {
                 public float Cont_B { get; set; }
-                public Water(float b) { Cont_B = b; }
+                public Water(float b) { Cont_B = b; } // Cell_Oriented_Contamination.B
             }
             public struct Rock { } // just a barrier // unoccupiable
             public struct Sand { } // just a blank cell
